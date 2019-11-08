@@ -1,0 +1,22 @@
+{
+    "name": "andrewdevelop/hex-command-bus",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "andrewdevelop",
+            "email": "andrewdevelop@gmail.com"
+        }
+    ],
+    "require": {
+        "andrewdevelop/hex-contracts": "dev-master",
+        "illuminate/container": "^6.0",
+        "php": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\Command\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
