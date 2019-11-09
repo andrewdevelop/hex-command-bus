@@ -3,10 +3,10 @@
 namespace Core\Command;
 
 use Illuminate\Support\ServiceProvider;
-use Core\Contracts\CommandBus;
 use Core\Contracts\CommandTranslator;
+use Core\Contracts\CommandBus;
 use Core\Command\ConventionBasedTranslator;
-use Core\Command\ConventionBasedTranslator;
+use Core\Command\DefaultCommandBus;
 
 class CommandBusServiceProvider extends ServiceProvider
 {
@@ -34,6 +34,9 @@ class CommandBusServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [CommandBus::class];
+        return [
+        	CommandTranslator::class, 
+        	CommandBus::class
+        ];
     }
 }
