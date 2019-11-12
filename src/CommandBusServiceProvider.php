@@ -10,7 +10,7 @@ use Core\Command\DefaultCommandBus;
 
 class CommandBusServiceProvider extends ServiceProvider
 {
-    
+
     /**
      * Indicates if loading of the provider is deferred.
      * @var bool
@@ -23,10 +23,11 @@ class CommandBusServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
-    {		
+    {
 		$this->app->singleton(CommandTranslator::class, ConventionBasedTranslator::class);
 		$this->app->singleton(CommandBus::class, DefaultCommandBus::class);
     }
+
 
     /**
      * Get the services provided by the provider.

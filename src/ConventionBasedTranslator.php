@@ -14,7 +14,7 @@ class ConventionBasedTranslator implements CommandTranslator
 	 * @param  Command $command 
 	 * @return string           
 	 */
-	public function translate(Command $command)
+	public function translate(Command $command, $namespace = 'Handlers', $suffix = 'Handler')
 	{
 		$namespaced_command_class = get_class($command);
 		$parts = explode('\\', $namespaced_command_class);
@@ -25,17 +25,17 @@ class ConventionBasedTranslator implements CommandTranslator
 			// to: Services\User\Handlers\RegisterUserHandler
 			for ($i = 0; $i < $parts_count; $i++) {
 				if ($i == $parts_count-2) {
-					$parts[$i] = 'Handlers';
+					$parts[$i] = $namespace;
 				}
 				if ($i == $parts_count-1) {
-					$parts[$i] = $parts[$i].'Handler';
+					$parts[$i] = $parts[$i].$suffix;
 				}
 			}
 			$handler_class = implode('\\', $parts);
 		} else {
 			// from: RegisterUser 
 			// to: RegisterUserHandler
-			$handler_class = $namespaced_command_class.'Handler';
+			$handler_class = $namespaced_command_class.$suffix;
 		}
 
 		if (class_exists($handler_class)) {
